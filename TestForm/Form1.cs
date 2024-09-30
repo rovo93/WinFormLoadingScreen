@@ -21,6 +21,7 @@ namespace TestForm
         public Form1()
         {
             InitializeComponent();
+            loadingForm.SetTransparencyColor(Color.White);
         }
 
         private void btnStartLoading_Click(object sender, EventArgs e)

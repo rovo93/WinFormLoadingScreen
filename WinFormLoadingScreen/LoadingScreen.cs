@@ -15,6 +15,7 @@ namespace WinFormLoadingScreen
         private Form LoadForm; // Form to display the loading screen
         private PictureBox pbAnimationGIF; // PictureBox to display the GIF animation
         private System.Drawing.Image LoadingGIF; // The GIF image to display in the PictureBox
+        private Color TransparencyColor; // Contain the color Transparency
 
         private Thread load_thread; // Thread to handle the loading of the form
         private Thread ShowThread; // Thread to display the form
@@ -36,6 +37,7 @@ namespace WinFormLoadingScreen
 
             LoadForm = new Form(); // Create a new instance of the loading form
             InitializeForm(); // Initialize form properties
+
             load_thread = new Thread(HandleLaunchLoading); // Create a separate thread to handle the loading
             try
             {
@@ -107,10 +109,9 @@ namespace WinFormLoadingScreen
             }
         }
 
-        // Event triggered when the form is loaded
-        private void LoadingScreen_Load(object sender, EventArgs e)
+       public void SetTransparencyColor(Color color)
         {
-            LoadForm.BackColor = Color.White; // Set the form background color to white
+            TransparencyColor = color;
         }
 
         // Method to initialize the form components
@@ -141,8 +142,8 @@ namespace WinFormLoadingScreen
             LoadForm.Margin = new Padding(4, 3, 4, 3);
             LoadForm.Name = "LoadingScreen"; // Set the form name
             LoadForm.ShowInTaskbar = false; // Don't show the form in the taskbar
-            LoadForm.Text = "Form1";
-            LoadForm.Load += LoadingScreen_Load; // Add the form load event
+            LoadForm.BackColor = TransparencyColor; // Set Form background to the same as TransparentKey
+            LoadForm.TransparencyKey = TransparencyColor; //Set the color Transparency
         }
 
         // Method to display error messages in a MessageBox
