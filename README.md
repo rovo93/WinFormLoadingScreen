@@ -6,8 +6,11 @@ How-To
 2. In primary Form declare the Loading Form:
     LoadingForm loadingForm = new LoadingForm(MyGifImage);
 
-3. Use loadingForm.LaunchLoading(); to start Animation
-4. Use loadingForm.StopLoading(); to end Animation
+3. Optional: use loadingForm.SetTransparencyColor(Color.YourColor);
+
+4. Use loadingForm.LaunchLoading(); to start Animation
+
+5. Use loadingForm.StopLoading(); to end Animation
 
 
 Example code:
@@ -18,6 +21,7 @@ Example code:
         public Form1()
         {
             InitializeComponent();
+            loadingForm.SetTransparencyColor(Color.White);
         }
 
 
